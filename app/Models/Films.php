@@ -8,10 +8,12 @@ use Illuminate\Support\Arr;
 
 class Films extends Model
 {
+
+    use HasFactory;
+    protected $fillable = ['titre','date', 'note', 'commentaire'];
     public function getById (int $id):array
     {
         $films = $this->getAll();
         return Arr::get($films, $id, ['titre' => 'Film introuvable']);
     }
-
 }
