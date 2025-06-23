@@ -1,4 +1,4 @@
-<div class="container">
+<div>
     <h1>Ajouter un film</h1>
     <form action="{{ route('films.store') }}" method="POST">
         @csrf

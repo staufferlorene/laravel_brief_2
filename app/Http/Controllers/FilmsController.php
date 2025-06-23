@@ -19,16 +19,27 @@ class FilmsController extends Controller
         return view('films.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         Films::create($request->all());
-
-     /*       DB::table('films')->insert([
-            'titre' => $request->titre,
-            'date' => $request->date,
-            'note' => $request->note,
-            'commentaire' => $request->commentaire,
-        ]);*/
-
-        return redirect()->route('films.index')->with('succès', 'Film crée avec succès.');
+        return redirect()->route('films.index');
     }
+
+    public function destroy(Films $film)
+    {
+        $film->delete();
+        return redirect()->route('films.index');
+    }
+
+    public function edit(Films $film)
+    {
+        return view('films.edit', compact('film'));
+    }
+
+    public function update(Request $request, Films $film)
+    {
+        $film->update($request->all());
+        return redirect()->route('films.index');
+    }
+
 }
