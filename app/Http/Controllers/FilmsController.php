@@ -42,4 +42,39 @@ class FilmsController extends Controller
         return redirect()->route('films.index');
     }
 
+    public function noteAsc()
+    {
+        $films = Films::query()->orderBy('note', 'asc')->get();
+        return view('films.index', compact('films'));
+    }
+
+    public function noteDesc()
+    {
+        $films = Films::query()->orderBy('note', 'desc')->get();
+        return view('films.index', compact('films'));
+    }
+
+    public function dateAsc()
+    {
+        $films = Films::query()->orderBy('date', 'asc')->get();
+        return view('films.index', compact('films'));
+    }
+
+    public function dateDesc()
+    {
+        $films = Films::query()->orderBy('date', 'desc')->get();
+        return view('films.index', compact('films'));
+    }
+
+    public function meilleureNote()
+    {
+        $films = Films::query()->where('note', '>=', '8')->get();
+        return view('films.index', compact('films'));
+    }
+
+    public function sortieRecente()
+    {
+        $films = Films::query()->where('date', '>=', 'DATE_SUB(NOW(), INTERVAL 3 MONTH)')->get();
+        return view('films.index', compact('films'));
+    }
 }

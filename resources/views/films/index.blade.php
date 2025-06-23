@@ -7,8 +7,8 @@
             <thead>
             <tr>
                 <th>Titre</th>
-                <th>Date</th>
-                <th>Note</th>
+                <th>Date <a href="{{ route('films.dateDesc') }}">⬇️️</a> <a href="{{ route('films.dateAsc') }}">⬆️</a> </th>
+                <th>Note <a href="{{ route('films.noteDesc') }}">⬇️️</a> <a href="{{ route('films.noteAsc') }}">⬆️</a> </th>
                 <th>Commentaire</th>
                 <th>Actions</th>
             </tr>
@@ -35,4 +35,6 @@
     @else
         <p>Il n'y a pas de film.</p>
     @endif
+    <button><a href="{{ route('films.meilleureNote') }}">Note à partir de 8 ️</a></button>
+    <button><a href="{{ route('films.sortieRecente') }}">Sortie moins de 3 mois</a></button>
 </div>

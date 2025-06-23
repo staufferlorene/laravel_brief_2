@@ -11,6 +11,11 @@ class Films extends Model
 
     use HasFactory;
     protected $fillable = ['titre','date', 'note', 'commentaire'];
+
+    public static function request()
+    {
+    }
+
     public function getById (int $id):array
     {
         $films = $this->getAll();
